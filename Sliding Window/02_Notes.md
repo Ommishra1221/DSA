@@ -1,11 +1,19 @@
-Sliding Window Algorithm (Aditya Verma Style Notes)
-Pattern Name
+🪟 Sliding Window Algorithm (Aditya Verma Style Notes)
 
+A powerful technique used to solve array and string problems involving contiguous subarrays or substrings efficiently.
+
+1️⃣ Pattern Name
 Sliding Window Pattern
 
-Used for solving array and string problems involving contiguous subarrays or substrings.
+Used for solving problems involving:
 
-1. Problem Motivation
+Contiguous subarrays
+
+Contiguous substrings
+
+Maximum / Minimum / Count type problems
+
+2️⃣ Problem Motivation
 
 Many interview problems ask things like:
 
@@ -17,21 +25,19 @@ Minimum window substring
 
 Count of valid subarrays
 
-A brute force solution often looks like:
+A naive solution usually:
 
-Generate every subarray
-Calculate something for each subarray
+Generates every possible subarray
+
+Computes the result for each
 
 This leads to nested loops.
 
-Time Complexity:
-
+⛔ Brute Force Complexity
 O(n²)
-
-Sliding Window reduces this to:
-
+✅ Sliding Window Optimization
 O(n)
-2. Classic Example Problem
+3️⃣ Classic Example Problem
 Problem
 
 Find the maximum sum of any subarray of size K.
@@ -40,27 +46,27 @@ Example
 Input:
 arr = [2,5,1,8,2,9,1]
 K = 3
-
 Output:
 19
-
-Explanation:
+Explanation
 
 Subarrays of size 3
 
 [2,5,1] = 8
 [5,1,8] = 14
 [1,8,2] = 11
-[8,2,9] = 19  ← maximum
+[8,2,9] = 19   ← Maximum
 [2,9,1] = 12
-3. Brute Force Approach
+4️⃣ Brute Force Approach
 Idea
 
-Generate all subarrays of size K and compute sum each time.
+Generate all subarrays of size K
+
+Compute sum each time
 
 Time Complexity
-O(n*k)
-Code
+O(n * k)
+C++ Implementation
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -83,8 +89,9 @@ int maxSumSubarray(vector<int>& arr, int k)
 
     return maxSum;
 }
+🚨 Problem with Brute Force
 
-Problem: Repeated calculations
+Repeated calculations.
 
 Example:
 
@@ -93,36 +100,42 @@ Example:
 
 The elements 5 and 1 are recalculated again.
 
-4. Sliding Window Optimization
+This wastes time.
+
+5️⃣ Sliding Window Optimization
 Core Idea
 
-Instead of recomputing the sum:
+Instead of recomputing the entire sum:
 
-Remove the element leaving the window
-Add the element entering the window
+1️⃣ Remove the element leaving the window
+2️⃣ Add the element entering the window
 
-Example:
+Example
+Window 1: [2,5,1] → sum = 8
 
-Window 1: [2,5,1] sum = 8
-Window 2: [5,1,8]
+Next window:
+
+[5,1,8]
+
+Instead of recomputing:
 
 New sum = previous sum - 2 + 8
 
-So we reuse previous work.
+We reuse previous work.
 
-5. Sliding Window Algorithm Steps
+6️⃣ Sliding Window Algorithm Steps
 
-Maintain a window sum
+1️⃣ Maintain a window sum
 
-Expand window using right pointer
+2️⃣ Expand window using right pointer
 
-When window size reaches K
+3️⃣ When window size reaches K
 
 Update answer
 
-Slide the window forward
+4️⃣ Slide the window forward
 
-6. Optimized C++ Implementation
+7️⃣ Optimized C++ Implementation
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -150,36 +163,35 @@ int maxSumSubarray(vector<int>& arr, int k)
 
     return maxSum;
 }
-7. Time Complexity
+8️⃣ Time Complexity
 O(n)
 
 Each element is visited at most twice.
 
-8. Space Complexity
+9️⃣ Space Complexity
 O(1)
 
 Only a few variables are used.
 
-9. Types of Sliding Window Problems
+🔟 Types of Sliding Window Problems
 
-Sliding Window problems are mainly two types.
+Sliding window problems are mainly two types.
 
-9.1 Fixed Size Window
+1️⃣ Fixed Size Window
 
-Window size K is given.
+The window size K is given.
 
 Example Problems:
 
-Maximum Sum Subarray of size K
+Maximum Sum Subarray of Size K
 
 First Negative Number in Window
 
-Count occurrences of anagrams
+Count Occurrences of Anagrams
 
-Maximum in every window
+Maximum Element in Every Window
 
-Structure:
-
+Structure
 for(int right = 0; right < n; right++)
 {
     windowSum += arr[right];
@@ -194,15 +206,14 @@ for(int right = 0; right < n; right++)
         slide window
     }
 }
-9.2 Variable Size Window
+2️⃣ Variable Size Window
 
-Window size is not fixed.
+Window size is NOT fixed.
 
-Window expands until a condition is satisfied.
+Window expands until a condition is satisfied
+Then it shrinks.
 
-Then shrinks.
-
-Example Problems:
+Example Problems
 
 Longest substring without repeating characters
 
@@ -210,8 +221,7 @@ Minimum window substring
 
 Longest substring with K unique characters
 
-Structure:
-
+Structure
 while(right < n)
 {
     expand window
@@ -225,20 +235,19 @@ while(right < n)
     else if(condition > required)
         shrink window
 }
-10. How to Identify Sliding Window Problems
+1️⃣1️⃣ How to Identify Sliding Window Problems
 
-Sliding window is applicable when:
+Sliding Window is applicable when:
 
-Problem involves arrays or strings
+✔ Problem involves arrays or strings
 
-Question involves subarray or substring
+✔ Question involves subarray or substring
 
-Need maximum / minimum / count
+✔ Need maximum / minimum / count
 
-Contiguous elements only
+✔ Only contiguous elements
 
-Common keywords:
-
+Common Keywords
 largest
 smallest
 maximum
@@ -246,19 +255,15 @@ minimum
 substring
 subarray
 window
-11. Why Sliding Window is Powerful
-
-Brute Force:
-
+1️⃣2️⃣ Why Sliding Window is Powerful
+Brute Force
 O(n²)
-
-Sliding Window:
-
+Sliding Window
 O(n)
 
-This drastically improves performance for large inputs.
+Huge performance improvement for large inputs.
 
-12. Sliding Window Template (Important)
+1️⃣3️⃣ Sliding Window Templates (Important)
 Fixed Window Template
 int left = 0;
 
@@ -268,7 +273,7 @@ for(int right = 0; right < n; right++)
 
     if(right - left + 1 == k)
     {
-        answer update
+        update answer
 
         remove arr[left]
 
@@ -290,34 +295,38 @@ for(int right = 0; right < n; right++)
 
     update answer
 }
-13. Revision Notes (Quick)
+1️⃣4️⃣ Quick Revision
 
-Sliding Window reduces
+Sliding Window reduces:
 
 O(n²) → O(n)
 
 Two types:
 
-1. Fixed Window
-2. Variable Window
+1️⃣ Fixed Window
+2️⃣ Variable Window
 
-Key Idea:
-
+Core Idea
 Add next element
 Remove previous element
+Use Sliding Window When Problem Has
 
-Use when problem involves:
+Subarray
 
-subarray
-substring
-contiguous elements
-14. Interview Tip
+Substring
 
-Sliding window often combines with:
+Contiguous elements
+
+💡 Interview Tip
+
+Sliding Window is often combined with:
 
 HashMap
-Set
-Deque
-Frequency array
 
-Especially in variable size window problems.
+Set
+
+Deque
+
+Frequency Array
+
+Especially in Variable Size Window problems.
