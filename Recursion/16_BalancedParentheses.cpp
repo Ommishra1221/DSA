@@ -1,8 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-
-
 void solve(string output, int op, int cl)
 {
     // Base condition
