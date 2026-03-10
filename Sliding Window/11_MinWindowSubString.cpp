@@ -19,24 +19,19 @@ public:
         int start = 0;
 
         while(j < s.length()){
-
             // calculation part
             if(mp.find(s[j]) != mp.end()){
                 mp[s[j]]--;
-
                 if(mp[s[j]] == 0)
                     count--;
             }
-
             // when all characters matched
             while(count == 0){
-
                 // update minimum window
                 if(j - i + 1 < minLen){
                     minLen = j - i + 1;
                     start = i;
                 }
-
                 // remove element from window
                 if(mp.find(s[i]) != mp.end()){
                     mp[s[i]]++;
@@ -44,10 +39,8 @@ public:
                     if(mp[s[i]] == 1)
                         count++;
                 }
-
                 i++;
             }
-
             j++;
         }
 
